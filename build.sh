@@ -4,3 +4,4 @@ cd ../p2_spaceship_interface; make
 cd ../../can_isotp_fd/canfd/; make
 cd ../canisotp/; make
 cd ../../logger/; make
+cd ../callback/; make
