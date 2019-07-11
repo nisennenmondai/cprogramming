@@ -1,6 +1,4 @@
 # cprogramming
-Basic programming exercices in plain C
-
 -------
 ARDUINO
 -------
