@@ -3,7 +3,8 @@
 ARDUINO
 -------
 Starter kit Arduino projects in C
-
+- sudo apt install avr-libc
+- sudo apt install gcc-avr
 
 
 ----------------------------------------------------
@@ -28,10 +29,7 @@ CAN ISOTP
 - make
 
 
-
 ------
 LOGGER
 ------
 tiny logger
-
-
