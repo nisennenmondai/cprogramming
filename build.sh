@@ -5,3 +5,6 @@ cd ../../can_isotp_fd/canfd/; make
 cd ../canisotp/; make
 cd ../../logger/; make
 cd ../callback/; make
+cd ../binary_trees/; make
+cd ../double_pointer/; make
+cd ../linked_lists/; make

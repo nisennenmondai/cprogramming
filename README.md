@@ -32,10 +32,36 @@ CAN ISOTP
 ------
 LOGGER
 ------
-tiny logger
+- tiny logger
 
 
 --------
 CALLBACK
 --------
-sample code for a simple callback
+- sample code for a simple callback
+
+
+----------------------------------
+BINARY TREES LINKED LIST TRAVERSAL
+----------------------------------
+- preorder
+- inorder
+- postorder
+- get height
+
+
+---------------
+DOUBLE POINTERS
+---------------
+- basic example on how to use double pointers
+
+
+------------
+LINKED LISTS
+------------
+- push front
+- push back
+- pop front
+- pop back
+- pop by index
+- pop by value
