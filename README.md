@@ -65,3 +65,11 @@ LINKED LISTS
 - pop back
 - pop by index
 - pop by value
+
+
+------------------
+BINARY SEARCH TREE
+------------------
+- insert
+- search
+- delete
