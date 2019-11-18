@@ -73,3 +73,7 @@ BINARY SEARCH TREE
 - insert
 - search
 - delete
+
+---------------------------
+SIMPLE SHELL IMPLEMENTATION
+---------------------------
