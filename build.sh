@@ -10,3 +10,4 @@ cd ../double_pointer/; make
 cd ../linked_lists/; make
 cd ../binary_search_trees/; make
 cd ../shell/; make
+cd ../simple_linear_regression/; make

@@ -77,3 +77,9 @@ BINARY SEARCH TREE
 ---------------------------
 SIMPLE SHELL IMPLEMENTATION
 ---------------------------
+
+-------------------------------------
+SIMPLE LINEAR REGRESSION WITH GNUPLOT
+-------------------------------------
+- sudo apt install gnuplot
+- loss function only RMSE
