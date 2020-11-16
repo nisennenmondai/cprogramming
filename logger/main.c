@@ -2,6 +2,7 @@
 
 int main(void)
 {
+
     int i;
 
     INFO("LOG INFO");

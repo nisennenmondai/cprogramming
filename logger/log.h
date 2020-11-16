@@ -49,6 +49,7 @@
 #include <stdarg.h>
 #include <time.h>
 #include <sys/time.h>
+#include <math.h>
 
 #define FMT_INFO  " - [INFO]  # "
 #define FMT_WARN  " - [WARN]  # "
@@ -64,19 +65,54 @@
 #define ERROR(...) print(FMT_ERROR __VA_ARGS__) 
 #define FATAL(...) print(FMT_FATAL __VA_ARGS__) 
 
-#define SIZE 30
+#define BUFFSIZE 25
+#define MSSIZE   7
+
+static void concatenate(char p[], char q[]) {
+    int c;
+    int d;
+    c = 0;
+
+    while (p[c] != '\0') {
+        c++;
+    }
+    d = 0;
+
+    while (q[d] != '\0') {
+        p[c] = q[d];
+        d++;
+        c++;
+    }
+    p[c] = '\0';
+}
 
 static void print(const char *message, ...)
 {
-    char buffer[SIZE];
+    char buffer[BUFFSIZE];
+    char ms[MSSIZE];
+    unsigned int millisec;
     va_list args;
-    time_t curtime;
     struct timeval tv;
+    struct tm* tm_info;
+
     va_start(args, message);    
+
     gettimeofday(&tv, NULL);
-    curtime = tv.tv_sec;
-    strftime(buffer, SIZE,"%Y-%m-%d %T.", localtime(&curtime));
-    printf("%s%ld",buffer, tv.tv_usec);
+
+    /* round to nearest millisec */
+    millisec = lrint(tv.tv_usec/1000.0);
+    /* allow for rounding up to nearest second */
+    if (millisec>=1000) { 
+        millisec -=1000;
+        tv.tv_sec++;
+    }
+    tm_info = localtime(&tv.tv_sec);
+    sprintf(ms, "%03d", millisec);
+    strftime(buffer, 25, "%Y-%m-%d %H:%M:%S.", tm_info);
+
+    concatenate(buffer, ms);
+    printf("%s", buffer);
+
     vprintf(message, args);
     printf("\n");
     va_end(args);
