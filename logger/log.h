@@ -114,6 +114,5 @@ static void print(const char *message, ...)
     printf("%s", buffer);
 
     vprintf(message, args);
-    printf("\n");
     va_end(args);
 }
