@@ -67,56 +67,51 @@
 #define DEBUG(...) print(FMT_DEBUG __VA_ARGS__) 
 #define ERROR(...) print(FMT_ERROR __VA_ARGS__) 
 #define FATAL(...) print(FMT_FATAL __VA_ARGS__) 
-#define TESTS(...) print(FMT_TESTS __VA_ARGS__) 
+#define TESTS(...) print(FMT_FATAL __VA_ARGS__) 
 
 #define BUFFSIZE 25
 #define MSSIZE   7
 
-static void concatenate(char p[], char q[]) {
-    int c;
-    int d;
-    c = 0;
-
-    while (p[c] != '\0') {
-        c++;
-    }
-    d = 0;
-
-    while (q[d] != '\0') {
-        p[c] = q[d];
-        d++;
-        c++;
-    }
-    p[c] = '\0';
-}
-
 static void print(const char *message, ...)
 {
-    char buffer[BUFFSIZE];
-    char ms[MSSIZE];
-    unsigned int millisec;
-    va_list args;
-    struct timeval tv;
-    struct tm* tm_info;
+        int c;
+        int d;
+        char buffer[BUFFSIZE];
+        char ms[MSSIZE];
+        unsigned int millisec;
+        va_list args;
+        struct timeval tv;
+        struct tm* tm_info;
 
-    va_start(args, message);    
+        va_start(args, message);    
 
-    gettimeofday(&tv, NULL);
+        gettimeofday(&tv, NULL);
 
-    /* round to nearest millisec */
-    millisec = lrint(tv.tv_usec/1000.0);
-    /* allow for rounding up to nearest second */
-    if (millisec>=1000) { 
-        millisec -=1000;
-        tv.tv_sec++;
-    }
-    tm_info = localtime(&tv.tv_sec);
-    sprintf(ms, "%03d", millisec);
-    strftime(buffer, 25, "%Y-%m-%d %H:%M:%S.", tm_info);
+        /* round to nearest millisec */
+        millisec = lrint(tv.tv_usec/1000.0);
+        /* allow for rounding up to nearest second */
+        if (millisec>=1000) { 
+                millisec -=1000;
+                tv.tv_sec++;
+        }
+        tm_info = localtime(&tv.tv_sec);
+        sprintf(ms, "%03d", millisec);
+        strftime(buffer, 25, "%Y-%m-%d %H:%M:%S.", tm_info);
 
-    concatenate(buffer, ms);
-    printf("%s", buffer);
+        c = 0;
+        while (buffer[c] != '\0') {
+                c++;
+        }
+        d = 0;
+        while (ms[d] != '\0') {
+                buffer[c] = ms[d];
+                d++;
+                c++;
+        }
+        buffer[c] = '\0';
 
-    vprintf(message, args);
-    va_end(args);
+        printf("%s", buffer);
+
+        vprintf(message, args);
+        va_end(args);
 }
